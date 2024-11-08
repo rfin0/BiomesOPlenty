@@ -29,7 +29,7 @@
   "biome.biomesoplenty.forested_field": "Лісисте поле",
   "biome.biomesoplenty.fungal_jungle": "Грибні джунглі",
   "biome.biomesoplenty.glowing_grotto": "Сяйний ґрот",
-  "biome.biomesoplenty.grassland": "Пасовище",
+  "biome.biomesoplenty.grassland": "Луг",
   "biome.biomesoplenty.gravel_beach": "Гравійний пляж",
   "biome.biomesoplenty.highland": "Високогір'я",
   "biome.biomesoplenty.hot_springs": "Гарячі джерела",
@@ -74,7 +74,7 @@
   "biome.biomesoplenty.wasteland": "Пустир",
   "biome.biomesoplenty.wasteland_steppe": "Степовий пустир",
   "biome.biomesoplenty.wetland": "Водно-болотні угіддя",
-  "biome.biomesoplenty.wintry_origin_valley": "Зимня долина зародження",
+  "biome.biomesoplenty.wintry_origin_valley": "Зимова долина зародження",
   "biome.biomesoplenty.withered_abyss": "Висушена безодня",
   "biome.biomesoplenty.woodland": "Рідколісся",
 
@@ -98,7 +98,7 @@
   "item.biomesoplenty.maple_boat": "Кленовий човен",
   "item.biomesoplenty.maple_chest_boat": "Кленовий човен зі скринею",
   "item.biomesoplenty.music_disc_wanderer": "Платівка",
-  "item.biomesoplenty.music_disc_wanderer.desc": "Тім Рурковський — Wanderer",
+  "item.biomesoplenty.music_disc_wanderer.desc": "Тім Рурковські — Wanderer",
   "item.biomesoplenty.palm_boat": "Пальмовий човен",
   "item.biomesoplenty.palm_chest_boat": "Пальмовий човен зі скринею",
   "item.biomesoplenty.pine_boat": "Сосновий човен",
@@ -114,7 +114,7 @@
   "block.biomesoplenty.algal_end_stone": "Зацвілий камінь Енду",
   "block.biomesoplenty.anomaly": "§kАНОМАЛІЯ",
   "block.biomesoplenty.barley": "Ячмінь",
-  "block.biomesoplenty.barnacles": "Балянус",
+  "block.biomesoplenty.barnacles": "Морські жолуді",
   "block.biomesoplenty.black_sand": "Чорний пісок",
   "block.biomesoplenty.black_sandstone": "Чорний пісковик",
   "block.biomesoplenty.black_sandstone_slab": "Плита з чорного пісковику",
@@ -406,7 +406,7 @@
   "block.biomesoplenty.potted_snowblossom_sapling": "Паросток сніго-цвітучого дерева в горщику",
   "block.biomesoplenty.potted_white_lavender": "Біла лаванда в горщику",
   "block.biomesoplenty.potted_willow_sapling": "Паросток верби в горщику",
-  "block.biomesoplenty.potted_wilted_lily": "Зів’яла лілія в горщику",
+  "block.biomesoplenty.potted_wilted_lily": "Зав’яла лілія в горщику",
   "block.biomesoplenty.potted_yellow_maple_sapling": "Паросток жовтого клена в горщику",
   "block.biomesoplenty.pus_bubble": "Гнійний пузир",
   "block.biomesoplenty.rainbow_birch_leaves": "Листя веселкової берези",
@@ -543,6 +543,8 @@
 
   "entity.biomesoplenty.boat": "Човен",
   "entity.biomesoplenty.chest_boat": "Човен зі скринею",
+
+  "jukebox_song.biomesoplenty.wanderer": "Тім Рурковські — Wanderer",
 
   "trim_material.biomesoplenty.glowworm_silk": "Матеріал із шовку сяйного хробака",
   "trim_material.biomesoplenty.rose_quartz": "Рожево-кварцовий матеріал",
