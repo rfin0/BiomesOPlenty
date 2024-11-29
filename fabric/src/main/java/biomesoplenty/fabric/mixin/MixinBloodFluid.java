@@ -32,7 +32,7 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 @Mixin(FogRenderer.class)
 public abstract class MixinBloodFluid
 {
-    @Inject(method = "computeFogColor", at = @At(value = "RETURN"))
+    @Inject(method = "computeFogColor", at = @At(value = "RETURN"), cancellable = true)
     private static void modifyFogColors(Camera camera, float f, ClientLevel level, int i, float g, CallbackInfoReturnable<Vector4f> cir)
     {
         BlockPos blockPos = camera.getBlockPosition();

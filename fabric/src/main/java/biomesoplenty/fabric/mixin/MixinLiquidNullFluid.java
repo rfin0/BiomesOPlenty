@@ -32,7 +32,7 @@ import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 @Mixin(FogRenderer.class)
 public abstract class MixinLiquidNullFluid
 {
-    @Inject(method = "computeFogColor", at = @At(value = "RETURN"))
+    @Inject(method = "computeFogColor", at = @At(value = "RETURN"), cancellable = true)
     private static void modifyFogColors(Camera camera, float f, ClientLevel level, int i, float g, CallbackInfoReturnable<Vector4f> cir)
     {
         BlockPos blockPos = camera.getBlockPosition();
@@ -46,7 +46,7 @@ public abstract class MixinLiquidNullFluid
 
         if(BOPFluids.LIQUID_NULL.isSame(fluid))
         {
-            cir.setReturnValue(new Vector4f(0.0F, 0.0F, 0.0F, 0.0F));
+            cir.setReturnValue(new Vector4f(0.6274509803921569F, 0.12549019607843137F, 0.9411764705882353F, 0.5F));
         }
     }
 
