@@ -46,9 +46,14 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
             }))
             .build();
 
+    final Consumer<BlockStateGenerator> blockStateOutput;
+    final BiConsumer<ResourceLocation, ModelInstance> modelOutput;
+
     public BOPBlockModelGenerators(Consumer<BlockStateGenerator> blockStateOutput, ItemModelOutput itemModelOutput, BiConsumer<ResourceLocation, ModelInstance> modelOutput)
     {
         super(blockStateOutput, itemModelOutput, modelOutput);
+        this.blockStateOutput = blockStateOutput;
+        this.modelOutput = modelOutput;
     }
 
     @Override
@@ -192,10 +197,10 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
     }
 
     @Override
-    public BlockModelGenerators.BlockFamilyProvider family(Block p_388779_)
+    public BlockModelGenerators.BlockFamilyProvider family(Block block)
     {
-        TexturedModel texturedmodel = this.texturedModels.getOrDefault(p_388779_, TexturedModel.CUBE.get(p_388779_));
-        return new BlockModelGenerators.BlockFamilyProvider(texturedmodel.getMapping()).fullBlock(p_388779_, texturedmodel.getTemplate());
+        TexturedModel texturedmodel = this.texturedModels.getOrDefault(block, TexturedModel.CUBE.get(block));
+        return new BOPBlockFamilyProvider(texturedmodel.getMapping()).fullBlock(block, texturedmodel.getTemplate());
     }
 
     public void createWillowVine()
@@ -203,5 +208,23 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.createMultifaceBlockStates(BOPBlocks.WILLOW_VINE);
         ResourceLocation resourcelocation = this.createFlatItemModelWithBlockTexture(BOPItems.WILLOW_VINE, BOPBlocks.WILLOW_VINE);
         this.registerSimpleTintedItemModel(BOPBlocks.WILLOW_VINE, resourcelocation, ItemModelUtils.constantTint(FoliageColor.FOLIAGE_DEFAULT));
+    }
+
+    public class BOPBlockFamilyProvider extends BlockFamilyProvider
+    {
+
+        public BOPBlockFamilyProvider(TextureMapping p_388151_)
+        {
+            super(p_388151_);
+        }
+
+        @Override
+        public BlockModelGenerators.BlockFamilyProvider fullBlockVariant(Block block)
+        {
+            TexturedModel texturedmodel = BOPBlockModelGenerators.this.texturedModels.getOrDefault(block, TexturedModel.CUBE.get(block));
+            ResourceLocation resourcelocation = texturedmodel.create(block, BOPBlockModelGenerators.this.modelOutput);
+            BOPBlockModelGenerators.this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, resourcelocation));
+            return this;
+        }
     }
 }
