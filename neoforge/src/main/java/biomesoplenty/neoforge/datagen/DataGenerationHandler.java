@@ -48,22 +48,25 @@ public class DataGenerationHandler
             .add(Registries.JUKEBOX_SONG, ModJukeboxSongs::bootstrap);
 
     @SubscribeEvent
-    public static void onGatherData(GatherDataEvent event)
+    public static void onGatherData(GatherDataEvent.Client event)
     {
         DataGenerator generator = event.getGenerator();
         PackOutput output = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        var datapackProvider = generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(output, lookupProvider, BUILDER, Set.of(BiomesOPlenty.MOD_ID)));
+        var datapackProvider = generator.addProvider(true, new DatapackBuiltinEntriesProvider(output, lookupProvider, BUILDER, Set.of(BiomesOPlenty.MOD_ID)));
 
         // Recipes
-        generator.addProvider(event.includeServer(), new BOPRecipeProvider.Runner(output, event.getLookupProvider()));
+        generator.addProvider(true, new BOPRecipeProvider.Runner(output, event.getLookupProvider()));
 
         // Loot
-        generator.addProvider(event.includeServer(), BOPLootTableProvider.create(output, lookupProvider));
+        generator.addProvider(true, BOPLootTableProvider.create(output, lookupProvider));
 
         // Data Maps
-        generator.addProvider(event.includeServer(), new BOPDataMapProvider(output, lookupProvider));
+        generator.addProvider(true, new BOPDataMapProvider(output, lookupProvider));
+
+        // Client
+        generator.addProvider(true, new BOPModelProvider(output));
     }
 }

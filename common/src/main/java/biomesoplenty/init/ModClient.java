@@ -61,7 +61,6 @@ public class ModClient
     {
         // Coloring
         EventManager.addListener(ModClient::registerBlockColors);
-        EventManager.addListener(ModClient::registerItemColors);
 
         // Particles
         EventManager.addListener(ModClient::registerParticleSprites);
@@ -330,19 +329,6 @@ public class ModClient
         RenderHelper.registerEntityRenderer(BOPEntities.EMPYREAL_CHEST_BOAT, context -> new BoatRenderer(context, ModModelLayers.EMPYREAL_CHEST_BOAT));
     }
 
-    public static void registerItemColors(RegisterColorsEvent.Item event)
-    {
-        event.register((stack, tintIndex) -> {
-            BlockState state = ((BlockItem)stack.getItem()).getBlock().defaultBlockState();
-            BlockColors blockColors = Minecraft.getInstance().getBlockColors();
-            return blockColors.getColor(state, null, null, tintIndex);
-        },
-        BOPBlocks.MOSSY_BLACK_SAND, BOPBlocks.SPROUT, BOPBlocks.BUSH, BOPBlocks.HIGH_GRASS, BOPBlocks.HIGH_GRASS_PLANT,
-        BOPBlocks.CLOVER, BOPBlocks.HUGE_CLOVER_PETAL, BOPBlocks.HUGE_LILY_PAD, BOPBlocks.FLOWERING_OAK_LEAVES,
-        BOPBlocks.PINE_LEAVES, BOPBlocks.MAHOGANY_LEAVES, BOPBlocks.PALM_LEAVES, BOPBlocks.WILLOW_LEAVES,
-        BOPBlocks.WILLOW_VINE, BOPBlocks.BRAMBLE_LEAVES);
-    }
-
     public static void registerBlockColors(RegisterColorsEvent.Block event)
     {
         //Grass Coloring
@@ -353,13 +339,13 @@ public class ModClient
 
         //Foliage Coloring
         event.register((state, world, pos, tintIndex) ->
-                        world != null && pos != null ? BiomeColors.getAverageFoliageColor(world, pos) : FoliageColor.getDefaultColor(),
+                        world != null && pos != null ? BiomeColors.getAverageFoliageColor(world, pos) : FoliageColor.FOLIAGE_DEFAULT,
                 BOPBlocks.BUSH, BOPBlocks.FLOWERING_OAK_LEAVES, BOPBlocks.PINE_LEAVES, BOPBlocks.MAHOGANY_LEAVES,
                 BOPBlocks.PALM_LEAVES, BOPBlocks.WILLOW_LEAVES, BOPBlocks.WILLOW_VINE, BOPBlocks.BRAMBLE_LEAVES);
 
         //Rainbow Birch Leaf Coloring
         event.register((state, world, pos, tintIndex) ->
-                        world != null && pos != null ? getRainbowBirchColor(world, pos) : FoliageColor.getDefaultColor(),
+                        world != null && pos != null ? getRainbowBirchColor(world, pos) : FoliageColor.FOLIAGE_DEFAULT,
                 BOPBlocks.RAINBOW_BIRCH_LEAVES);
 
         //Flowerbed Coloring

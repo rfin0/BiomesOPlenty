@@ -1,8 +1,0 @@
-{
-    "variants": {
-		"": [
-            { "model": "biomesoplenty:block/magic_leaves" },
-			{ "model": "biomesoplenty:block/magic_leaves_alt" }
-        ]
-    }
-}

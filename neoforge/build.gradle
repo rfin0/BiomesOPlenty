@@ -35,7 +35,7 @@ runs {
         programArgument '--nogui'
     }
 
-    data {
+    clientData {
         programArguments.addAll '--mod', project.mod_id, '--all', '--output', project(':Common').file('src/generated/resources/').getAbsolutePath(), '--existing', project(':Common').file('src/main/resources/').getAbsolutePath()
     }
 }
