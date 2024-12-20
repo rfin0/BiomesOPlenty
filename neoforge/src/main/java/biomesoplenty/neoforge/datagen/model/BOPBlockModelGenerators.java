@@ -32,18 +32,30 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
     final Map<Block, TexturedModel> texturedModels = ImmutableMap.<Block, TexturedModel>builder()
             .put(BOPBlocks.WHITE_SANDSTONE, TexturedModel.TOP_BOTTOM_WITH_WALL.get(BOPBlocks.WHITE_SANDSTONE))
             .put(BOPBlocks.SMOOTH_WHITE_SANDSTONE, TexturedModel.createAllSame(TextureMapping.getBlockTexture(BOPBlocks.WHITE_SANDSTONE, "_top")))
+            .put(BOPBlocks.CUT_WHITE_SANDSTONE, TexturedModel.COLUMN.get(BOPBlocks.CUT_WHITE_SANDSTONE).updateTextures(p_386968_ -> {
+                p_386968_.put(TextureSlot.END, TextureMapping.getBlockTexture(BOPBlocks.WHITE_SANDSTONE, "_top"));
+                p_386968_.put(TextureSlot.SIDE, TextureMapping.getBlockTexture(BOPBlocks.CUT_WHITE_SANDSTONE));
+            }))
             .put(BOPBlocks.CHISELED_WHITE_SANDSTONE, TexturedModel.COLUMN.get(BOPBlocks.CHISELED_WHITE_SANDSTONE).updateTextures(p_386968_ -> {
                 p_386968_.put(TextureSlot.END, TextureMapping.getBlockTexture(BOPBlocks.WHITE_SANDSTONE, "_top"));
                 p_386968_.put(TextureSlot.SIDE, TextureMapping.getBlockTexture(BOPBlocks.CHISELED_WHITE_SANDSTONE));
             }))
             .put(BOPBlocks.ORANGE_SANDSTONE, TexturedModel.TOP_BOTTOM_WITH_WALL.get(BOPBlocks.ORANGE_SANDSTONE))
             .put(BOPBlocks.SMOOTH_ORANGE_SANDSTONE, TexturedModel.createAllSame(TextureMapping.getBlockTexture(BOPBlocks.ORANGE_SANDSTONE, "_top")))
+            .put(BOPBlocks.CUT_ORANGE_SANDSTONE, TexturedModel.COLUMN.get(BOPBlocks.CUT_ORANGE_SANDSTONE).updateTextures(p_386968_ -> {
+                p_386968_.put(TextureSlot.END, TextureMapping.getBlockTexture(BOPBlocks.ORANGE_SANDSTONE, "_top"));
+                p_386968_.put(TextureSlot.SIDE, TextureMapping.getBlockTexture(BOPBlocks.CUT_ORANGE_SANDSTONE));
+            }))
             .put(BOPBlocks.CHISELED_ORANGE_SANDSTONE, TexturedModel.COLUMN.get(BOPBlocks.CHISELED_ORANGE_SANDSTONE).updateTextures(p_386968_ -> {
                 p_386968_.put(TextureSlot.END, TextureMapping.getBlockTexture(BOPBlocks.ORANGE_SANDSTONE, "_top"));
                 p_386968_.put(TextureSlot.SIDE, TextureMapping.getBlockTexture(BOPBlocks.CHISELED_ORANGE_SANDSTONE));
             }))
             .put(BOPBlocks.BLACK_SANDSTONE, TexturedModel.TOP_BOTTOM_WITH_WALL.get(BOPBlocks.BLACK_SANDSTONE))
             .put(BOPBlocks.SMOOTH_BLACK_SANDSTONE, TexturedModel.createAllSame(TextureMapping.getBlockTexture(BOPBlocks.BLACK_SANDSTONE, "_top")))
+            .put(BOPBlocks.CUT_BLACK_SANDSTONE, TexturedModel.COLUMN.get(BOPBlocks.CUT_BLACK_SANDSTONE).updateTextures(p_386968_ -> {
+                p_386968_.put(TextureSlot.END, TextureMapping.getBlockTexture(BOPBlocks.BLACK_SANDSTONE, "_top"));
+                p_386968_.put(TextureSlot.SIDE, TextureMapping.getBlockTexture(BOPBlocks.CUT_BLACK_SANDSTONE));
+            }))
             .put(BOPBlocks.CHISELED_BLACK_SANDSTONE, TexturedModel.COLUMN.get(BOPBlocks.CHISELED_BLACK_SANDSTONE).updateTextures(p_386968_ -> {
                 p_386968_.put(TextureSlot.END, TextureMapping.getBlockTexture(BOPBlocks.BLACK_SANDSTONE, "_top"));
                 p_386968_.put(TextureSlot.SIDE, TextureMapping.getBlockTexture(BOPBlocks.CHISELED_BLACK_SANDSTONE));
@@ -169,10 +181,14 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.createPlantWithDefaultItem(BOPBlocks.SNOWBLOSSOM_SAPLING, BOPBlocks.POTTED_SNOWBLOSSOM_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         this.createPlantWithDefaultItem(BOPBlocks.RAINBOW_BIRCH_SAPLING, BOPBlocks.POTTED_RAINBOW_BIRCH_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
+        this.createRotatedVariantBlock(BOPBlocks.BRIMSTONE);
+        this.createRotatedVariantBlock(BOPBlocks.DRIED_SALT);
+
         this.createMushroomBlock(BOPBlocks.TOADSTOOL_BLOCK);
         this.createGlowshroomBlock(BOPBlocks.GLOWSHROOM_BLOCK);
 
-        this.createTrivialCube(BOPBlocks.BRIMSTONE);
+        this.registerSimpleTintedItemModel(BOPBlocks.MOSSY_BLACK_SAND, ModelLocationUtils.getModelLocation(BOPBlocks.MOSSY_BLACK_SAND), new GrassColorSource());
+        this.registerSimpleTintedItemModel(BOPBlocks.FLOWERING_OAK_LEAVES, ModelLocationUtils.getModelLocation(BOPBlocks.FLOWERING_OAK_LEAVES), ItemModelUtils.constantTint(-12012264));
         this.createWillowVine();
 
         //
@@ -187,19 +203,17 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.registerSimpleFlatItemModel(BOPBlocks.ICY_IRIS, "_top");
         this.registerSimpleFlatItemModel(BOPBlocks.BRIMSTONE_CLUSTER, "_bottom");
         this.registerSimpleFlatItemModel(BOPBlocks.LUMALOOP, "_plant_lit");
+
+        // Hanging plants
         this.registerSimpleFlatItemModel(BOPBlocks.SPANISH_MOSS);
         this.registerSimpleFlatItemModel(BOPBlocks.FLESH_TENDONS);
         this.registerSimpleFlatItemModel(BOPBlocks.HANGING_COBWEB);
+
         this.registerSimpleFlatItemModel(BOPBlocks.WEBBING);
-        this.registerSimpleFlatItemModel(BOPBlocks.DEAD_GRASS);
-        this.registerSimpleFlatItemModel(BOPBlocks.DESERT_GRASS);
-        this.registerSimpleFlatItemModel(BOPBlocks.DUNE_GRASS);
-        this.registerSimpleFlatItemModel(BOPBlocks.TUNDRA_SHRUB);
-        this.registerSimpleFlatItemModel(BOPBlocks.ENDERPHYTE);
-        this.registerSimpleFlatItemModel(BOPBlocks.TINY_CACTUS);
+
         this.registerSimpleFlatItemModel(BOPBlocks.TOADSTOOL);
         this.registerSimpleFlatItemModel(BOPBlocks.GLOWSHROOM);
-        this.registerSimpleFlatItemModel(BOPBlocks.NULL_PLANT);
+
         this.registerSimpleFlatItemModel(BOPBlocks.BRIMSTONE_BUD);
         this.registerSimpleFlatItemModel(BOPBlocks.BLACKSTONE_SPINES);
         this.registerSimpleFlatItemModel(BOPBlocks.BLACKSTONE_BULB);
@@ -207,6 +221,9 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.registerSimpleFlatItemModel(BOPBlocks.LARGE_ROSE_QUARTZ_BUD);
         this.registerSimpleFlatItemModel(BOPBlocks.MEDIUM_ROSE_QUARTZ_BUD);
         this.registerSimpleFlatItemModel(BOPBlocks.SMALL_ROSE_QUARTZ_BUD);
+        this.registerSimpleFlatItemModel(BOPBlocks.NULL_PLANT);
+
+        // Flowers
         this.registerSimpleFlatItemModel(BOPBlocks.ROSE);
         this.registerSimpleFlatItemModel(BOPBlocks.VIOLET);
         this.registerSimpleFlatItemModel(BOPBlocks.LAVENDER);
@@ -218,9 +235,16 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.registerSimpleFlatItemModel(BOPBlocks.BURNING_BLOSSOM);
         this.registerSimpleFlatItemModel(BOPBlocks.ENDBLOOM);
 
+        // Foliage
         this.createTintedItemModel(BOPBlocks.SPROUT, new GrassColorSource());
         this.createTintedItemModel(BOPBlocks.BUSH, ItemModelUtils.constantTint(-12012264));
         this.createTintedItemModel(BOPBlocks.BRAMBLE_LEAVES, ItemModelUtils.constantTint(-12012264));
+        this.registerSimpleFlatItemModel(BOPBlocks.DUNE_GRASS);
+        this.registerSimpleFlatItemModel(BOPBlocks.DESERT_GRASS);
+        this.registerSimpleFlatItemModel(BOPBlocks.DEAD_GRASS);
+        this.registerSimpleFlatItemModel(BOPBlocks.TUNDRA_SHRUB);
+        this.registerSimpleFlatItemModel(BOPBlocks.ENDERPHYTE);
+        this.registerSimpleFlatItemModel(BOPBlocks.TINY_CACTUS);
 
         // Items that use a separate item texture from their block
         this.createBlockItemModel(BOPBlocks.RED_MAPLE_LEAF_PILE);

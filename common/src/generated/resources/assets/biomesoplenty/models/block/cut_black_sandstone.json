@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "biomesoplenty:block/cut_black_sandstone"
+    "end": "biomesoplenty:block/black_sandstone_top",
+    "side": "biomesoplenty:block/cut_black_sandstone"
   }
 }
