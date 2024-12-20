@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "biomesoplenty:block/burning_blossom"
+    "model": "biomesoplenty:item/burning_blossom"
   }
 }

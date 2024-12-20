@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "biomesoplenty:block/hanging_cobweb"
+    "model": "biomesoplenty:item/hanging_cobweb"
   }
 }

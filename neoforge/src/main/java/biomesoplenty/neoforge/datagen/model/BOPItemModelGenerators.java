@@ -35,10 +35,6 @@ public class BOPItemModelGenerators extends ItemModelGenerators
         this.generateFlatItem(BOPItems.LIQUID_NULL_BUCKET, ModelTemplates.FLAT_ITEM);
         this.generateFlatItem(BOPItems.MUSIC_DISC_WANDERER, ModelTemplates.FLAT_ITEM);
 
-        // These should probably be under blocks
-        this.generateFlatItem(BOPItems.HUGE_LILY_PAD, ModelTemplates.FLAT_ITEM);
-        this.generateFlatItem(BOPItems.WATERGRASS, ModelTemplates.FLAT_ITEM);
-
         this.generateFlatItem(BOPItems.FIR_BOAT, ModelTemplates.FLAT_ITEM);
         this.generateFlatItem(BOPItems.PINE_BOAT, ModelTemplates.FLAT_ITEM);
         this.generateFlatItem(BOPItems.MAPLE_BOAT, ModelTemplates.FLAT_ITEM);

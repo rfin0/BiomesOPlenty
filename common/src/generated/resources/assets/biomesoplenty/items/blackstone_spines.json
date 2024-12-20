@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "biomesoplenty:block/blackstone_spines"
+    "model": "biomesoplenty:item/blackstone_spines"
   }
 }

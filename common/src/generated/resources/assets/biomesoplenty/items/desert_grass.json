@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "biomesoplenty:block/desert_grass"
+    "model": "biomesoplenty:item/desert_grass"
   }
 }

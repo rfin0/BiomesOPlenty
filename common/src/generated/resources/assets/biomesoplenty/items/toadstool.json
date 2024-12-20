@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "biomesoplenty:block/toadstool"
+    "model": "biomesoplenty:item/toadstool"
   }
 }

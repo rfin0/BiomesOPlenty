@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "biomesoplenty:block/tundra_shrub"
+    "model": "biomesoplenty:item/tundra_shrub"
   }
 }

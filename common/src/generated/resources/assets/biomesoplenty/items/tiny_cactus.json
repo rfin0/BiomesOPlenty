@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "biomesoplenty:block/tiny_cactus"
+    "model": "biomesoplenty:item/tiny_cactus"
   }
 }

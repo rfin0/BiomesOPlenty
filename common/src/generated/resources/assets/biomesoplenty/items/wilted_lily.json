@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "biomesoplenty:block/wilted_lily"
+    "model": "biomesoplenty:item/wilted_lily"
   }
 }

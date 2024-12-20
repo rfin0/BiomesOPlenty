@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "biomesoplenty:block/glowshroom"
+    "model": "biomesoplenty:item/glowshroom"
   }
 }

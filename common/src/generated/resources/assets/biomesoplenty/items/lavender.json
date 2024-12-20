@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "biomesoplenty:block/lavender"
+    "model": "biomesoplenty:item/lavender"
   }
 }

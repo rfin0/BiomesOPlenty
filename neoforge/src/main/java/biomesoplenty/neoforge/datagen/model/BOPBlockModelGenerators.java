@@ -8,16 +8,20 @@ import biomesoplenty.api.block.BOPBlocks;
 import biomesoplenty.api.item.BOPItems;
 import biomesoplenty.neoforge.datagen.BOPBlockFamilies;
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.client.color.item.GrassColorSource;
+import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
-import net.minecraft.client.data.models.blockstates.BlockStateGenerator;
+import net.minecraft.client.data.models.blockstates.*;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -165,35 +169,85 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.createPlantWithDefaultItem(BOPBlocks.SNOWBLOSSOM_SAPLING, BOPBlocks.POTTED_SNOWBLOSSOM_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         this.createPlantWithDefaultItem(BOPBlocks.RAINBOW_BIRCH_SAPLING, BOPBlocks.POTTED_RAINBOW_BIRCH_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
-        this.createCrossBlockWithDefaultItem(BOPBlocks.PUS_BUBBLE, PlantType.NOT_TINTED);
+        this.createMushroomBlock(BOPBlocks.TOADSTOOL_BLOCK);
+        this.createGlowshroomBlock(BOPBlocks.GLOWSHROOM_BLOCK);
 
         this.createTrivialCube(BOPBlocks.BRIMSTONE);
         this.createWillowVine();
-
-        // Foliage
-        this.createCrossBlockWithDefaultItem(BOPBlocks.DEAD_GRASS, PlantType.NOT_TINTED);
 
         //
         // Items. Ideally the block models should be generated too, but we'll just do the items for now for simplicity's sake
         //
 
         // Double plants
-        this.registerSimpleFlatItemModel(BOPBlocks.EYEBULB, "_top");
         this.registerSimpleFlatItemModel(BOPBlocks.TALL_LAVENDER, "_top");
         this.registerSimpleFlatItemModel(BOPBlocks.TALL_WHITE_LAVENDER, "_top");
         this.registerSimpleFlatItemModel(BOPBlocks.GOLDENROD, "_top");
         this.registerSimpleFlatItemModel(BOPBlocks.BLUE_HYDRANGEA, "_top");
         this.registerSimpleFlatItemModel(BOPBlocks.ICY_IRIS, "_top");
-        this.registerSimpleFlatItemModel(BOPBlocks.BARLEY, "_top");
-        this.registerSimpleFlatItemModel(BOPBlocks.SEA_OATS, "_top");
-        this.registerSimpleFlatItemModel(BOPBlocks.CATTAIL, "_top");
-        this.registerSimpleFlatItemModel(BOPBlocks.REED, "_top");
-        this.registerSimpleFlatItemModel(BOPBlocks.BRIMSTONE_CLUSTER, "_top");
+        this.registerSimpleFlatItemModel(BOPBlocks.BRIMSTONE_CLUSTER, "_bottom");
+        this.registerSimpleFlatItemModel(BOPBlocks.LUMALOOP, "_plant_lit");
+        this.registerSimpleFlatItemModel(BOPBlocks.SPANISH_MOSS);
+        this.registerSimpleFlatItemModel(BOPBlocks.FLESH_TENDONS);
+        this.registerSimpleFlatItemModel(BOPBlocks.HANGING_COBWEB);
+        this.registerSimpleFlatItemModel(BOPBlocks.WEBBING);
+        this.registerSimpleFlatItemModel(BOPBlocks.DEAD_GRASS);
+        this.registerSimpleFlatItemModel(BOPBlocks.DESERT_GRASS);
+        this.registerSimpleFlatItemModel(BOPBlocks.DUNE_GRASS);
+        this.registerSimpleFlatItemModel(BOPBlocks.TUNDRA_SHRUB);
+        this.registerSimpleFlatItemModel(BOPBlocks.ENDERPHYTE);
+        this.registerSimpleFlatItemModel(BOPBlocks.TINY_CACTUS);
+        this.registerSimpleFlatItemModel(BOPBlocks.TOADSTOOL);
+        this.registerSimpleFlatItemModel(BOPBlocks.GLOWSHROOM);
+        this.registerSimpleFlatItemModel(BOPBlocks.NULL_PLANT);
+        this.registerSimpleFlatItemModel(BOPBlocks.BRIMSTONE_BUD);
+        this.registerSimpleFlatItemModel(BOPBlocks.BLACKSTONE_SPINES);
+        this.registerSimpleFlatItemModel(BOPBlocks.BLACKSTONE_BULB);
+        this.registerSimpleFlatItemModel(BOPBlocks.ROSE_QUARTZ_CLUSTER);
+        this.registerSimpleFlatItemModel(BOPBlocks.LARGE_ROSE_QUARTZ_BUD);
+        this.registerSimpleFlatItemModel(BOPBlocks.MEDIUM_ROSE_QUARTZ_BUD);
+        this.registerSimpleFlatItemModel(BOPBlocks.SMALL_ROSE_QUARTZ_BUD);
+        this.registerSimpleFlatItemModel(BOPBlocks.ROSE);
+        this.registerSimpleFlatItemModel(BOPBlocks.VIOLET);
+        this.registerSimpleFlatItemModel(BOPBlocks.LAVENDER);
+        this.registerSimpleFlatItemModel(BOPBlocks.WHITE_LAVENDER);
+        this.registerSimpleFlatItemModel(BOPBlocks.ORANGE_COSMOS);
+        this.registerSimpleFlatItemModel(BOPBlocks.PINK_HIBISCUS);
+        this.registerSimpleFlatItemModel(BOPBlocks.GLOWFLOWER);
+        this.registerSimpleFlatItemModel(BOPBlocks.WILTED_LILY);
+        this.registerSimpleFlatItemModel(BOPBlocks.BURNING_BLOSSOM);
+        this.registerSimpleFlatItemModel(BOPBlocks.ENDBLOOM);
 
-        this.registerSimpleFlatItemModel(BOPBlocks.WILDFLOWER);
-        this.registerSimpleFlatItemModel(BOPBlocks.WHITE_PETALS);
-        this.registerSimpleFlatItemModel(BOPBlocks.CLOVER);
-        this.registerSimpleFlatItemModel(BOPBlocks.HUGE_CLOVER_PETAL);
+        this.createTintedItemModel(BOPBlocks.SPROUT, new GrassColorSource());
+        this.createTintedItemModel(BOPBlocks.BUSH, ItemModelUtils.constantTint(-12012264));
+        this.createTintedItemModel(BOPBlocks.BRAMBLE_LEAVES, ItemModelUtils.constantTint(-12012264));
+
+        // Items that use a separate item texture from their block
+        this.createBlockItemModel(BOPBlocks.RED_MAPLE_LEAF_PILE);
+        this.createBlockItemModel(BOPBlocks.ORANGE_MAPLE_LEAF_PILE);
+        this.createBlockItemModel(BOPBlocks.YELLOW_MAPLE_LEAF_PILE);
+        this.createBlockItemModel(BOPBlocks.BRAMBLE);
+        this.createBlockItemModel(BOPBlocks.WILDFLOWER);
+        this.createBlockItemModel(BOPBlocks.WHITE_PETALS);
+        this.createBlockItemModel(BOPBlocks.WATERGRASS);
+        this.createBlockItemModel(BOPBlocks.CATTAIL);
+        this.createBlockItemModel(BOPBlocks.BARLEY);
+        this.createBlockItemModel(BOPBlocks.SEA_OATS);
+        this.createBlockItemModel(BOPBlocks.REED);
+        this.createBlockItemModel(BOPBlocks.SPIDER_EGG);
+        this.createBlockItemModel(BOPBlocks.STRINGY_COBWEB);
+        this.createBlockItemModel(BOPBlocks.PUS_BUBBLE);
+        this.createBlockItemModel(BOPBlocks.EYEBULB);
+        this.createBlockItemModel(BOPBlocks.HAIR);
+        this.createBlockItemModel(BOPBlocks.GLOWWORM_SILK);
+        this.createBlockItemModel(BOPBlocks.BARNACLES);
+        this.createBlockItemModel(BOPBlocks.DEAD_BRANCH);
+        this.createBlockItemModel(BOPBlocks.WATERLILY);
+        this.createBlockItemModel(BOPBlocks.PINK_DAFFODIL);
+        this.createTintedBlockItemModel(BOPBlocks.CLOVER, new GrassColorSource());
+        this.createTintedBlockItemModel(BOPBlocks.HUGE_CLOVER_PETAL, new GrassColorSource());
+        this.createTintedBlockItemModel(BOPBlocks.HIGH_GRASS, new GrassColorSource());
+        this.createTintedBlockItemModel(BOPBlocks.HUGE_LILY_PAD, ItemModelUtils.constantTint(-9321636));
     }
 
     @Override
@@ -210,9 +264,109 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.registerSimpleTintedItemModel(BOPBlocks.WILLOW_VINE, resourcelocation, ItemModelUtils.constantTint(FoliageColor.FOLIAGE_DEFAULT));
     }
 
+    public void createBlockItemModel(Block block)
+    {
+        ResourceLocation resourcelocation = this.createFlatItemModel(block.asItem());
+        this.registerSimpleItemModel(block, resourcelocation);
+    }
+
+    public void createTintedBlockItemModel(Block block, ItemTintSource tint)
+    {
+        ResourceLocation resourcelocation = this.createFlatItemModel(block.asItem());
+        this.registerSimpleTintedItemModel(block, resourcelocation, tint);
+    }
+
+    public void createTintedItemModel(Block block, ItemTintSource tint)
+    {
+        ResourceLocation resourcelocation = this.createFlatItemModelWithBlockTexture(block.asItem(), block);
+        this.registerSimpleTintedItemModel(block, resourcelocation, tint);
+    }
+
+    public void createGlowshroomBlock(Block p_388752_)
+    {
+        ResourceLocation resourcelocation = ModelTemplates.SINGLE_FACE.create(p_388752_, TextureMapping.defaultTexture(p_388752_), this.modelOutput);
+        ResourceLocation resourcelocation1 = ModelLocationUtils.getModelLocation(p_388752_, "_inside");
+        this.blockStateOutput
+            .accept(
+                MultiPartGenerator.multiPart(p_388752_)
+                    .with(Condition.condition().term(BlockStateProperties.NORTH, true), Variant.variant().with(VariantProperties.MODEL, resourcelocation))
+                    .with(
+                        Condition.condition().term(BlockStateProperties.EAST, true),
+                        Variant.variant()
+                            .with(VariantProperties.MODEL, resourcelocation)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)
+                            .with(VariantProperties.UV_LOCK, true)
+                    )
+                    .with(
+                        Condition.condition().term(BlockStateProperties.SOUTH, true),
+                        Variant.variant()
+                            .with(VariantProperties.MODEL, resourcelocation)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)
+                            .with(VariantProperties.UV_LOCK, true)
+                    )
+                    .with(
+                        Condition.condition().term(BlockStateProperties.WEST, true),
+                        Variant.variant()
+                            .with(VariantProperties.MODEL, resourcelocation)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)
+                            .with(VariantProperties.UV_LOCK, true)
+                    )
+                    .with(
+                        Condition.condition().term(BlockStateProperties.UP, true),
+                        Variant.variant()
+                            .with(VariantProperties.MODEL, resourcelocation)
+                            .with(VariantProperties.X_ROT, VariantProperties.Rotation.R270)
+                            .with(VariantProperties.UV_LOCK, true)
+                    )
+                    .with(
+                        Condition.condition().term(BlockStateProperties.DOWN, true),
+                        Variant.variant()
+                            .with(VariantProperties.MODEL, resourcelocation)
+                            .with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)
+                            .with(VariantProperties.UV_LOCK, true)
+                    )
+                    .with(Condition.condition().term(BlockStateProperties.NORTH, false), Variant.variant().with(VariantProperties.MODEL, resourcelocation1))
+                    .with(
+                        Condition.condition().term(BlockStateProperties.EAST, false),
+                        Variant.variant()
+                            .with(VariantProperties.MODEL, resourcelocation1)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)
+                            .with(VariantProperties.UV_LOCK, false)
+                    )
+                    .with(
+                        Condition.condition().term(BlockStateProperties.SOUTH, false),
+                        Variant.variant()
+                            .with(VariantProperties.MODEL, resourcelocation1)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)
+                            .with(VariantProperties.UV_LOCK, false)
+                    )
+                    .with(
+                        Condition.condition().term(BlockStateProperties.WEST, false),
+                        Variant.variant()
+                            .with(VariantProperties.MODEL, resourcelocation1)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)
+                            .with(VariantProperties.UV_LOCK, false)
+                    )
+                    .with(
+                        Condition.condition().term(BlockStateProperties.UP, false),
+                        Variant.variant()
+                            .with(VariantProperties.MODEL, resourcelocation1)
+                            .with(VariantProperties.X_ROT, VariantProperties.Rotation.R270)
+                            .with(VariantProperties.UV_LOCK, false)
+                    )
+                    .with(
+                        Condition.condition().term(BlockStateProperties.DOWN, false),
+                        Variant.variant()
+                            .with(VariantProperties.MODEL, resourcelocation1)
+                            .with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)
+                            .with(VariantProperties.UV_LOCK, false)
+                    )
+            );
+        this.registerSimpleItemModel(p_388752_, TexturedModel.CUBE.createWithSuffix(p_388752_, "_inventory", this.modelOutput));
+    }
+
     public class BOPBlockFamilyProvider extends BlockFamilyProvider
     {
-
         public BOPBlockFamilyProvider(TextureMapping p_388151_)
         {
             super(p_388151_);
