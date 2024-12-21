@@ -18,6 +18,7 @@ import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.Map;
@@ -172,24 +173,36 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.createPlantWithDefaultItem(BOPBlocks.EMPYREAL_SAPLING, BOPBlocks.POTTED_EMPYREAL_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
         // Other trees
+        this.registerSimpleItemModel(BOPBlocks.NULL_LEAVES, ModelLocationUtils.getModelLocation(BOPBlocks.NULL_LEAVES, "_alt"));
+
+        this.createTrivialBlock(BOPBlocks.ORIGIN_LEAVES, TexturedModel.LEAVES);
         this.createPlantWithDefaultItem(BOPBlocks.ORIGIN_SAPLING, BOPBlocks.POTTED_ORIGIN_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createLeavesOverlay(BOPBlocks.FLOWERING_OAK_LEAVES, FoliageColor.FOLIAGE_DEFAULT);
         this.createPlantWithDefaultItem(BOPBlocks.FLOWERING_OAK_SAPLING, BOPBlocks.POTTED_FLOWERING_OAK_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createTrivialBlock(BOPBlocks.CYPRESS_LEAVES, TexturedModel.LEAVES);
         this.createPlantWithDefaultItem(BOPBlocks.CYPRESS_SAPLING, BOPBlocks.POTTED_CYPRESS_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createTrivialBlock(BOPBlocks.SNOWBLOSSOM_LEAVES, TexturedModel.LEAVES);
         this.createPlantWithDefaultItem(BOPBlocks.SNOWBLOSSOM_SAPLING, BOPBlocks.POTTED_SNOWBLOSSOM_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+        this.registerSimpleItemModel(BOPBlocks.RAINBOW_BIRCH_LEAVES, TexturedModel.LEAVES.createWithSuffix(BOPBlocks.RAINBOW_BIRCH_LEAVES, "_inventory", this.modelOutput));
         this.createPlantWithDefaultItem(BOPBlocks.RAINBOW_BIRCH_SAPLING, BOPBlocks.POTTED_RAINBOW_BIRCH_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
-        // Separate item model for flowering oak leaves
-        this.registerSimpleItemModel(BOPBlocks.RAINBOW_BIRCH_LEAVES, TexturedModel.LEAVES.createWithSuffix(BOPBlocks.RAINBOW_BIRCH_LEAVES, "_inventory", this.modelOutput));
+        this.createRotatedVariantBlock(BOPBlocks.WHITE_SAND);
+        this.createRotatedVariantBlock(BOPBlocks.ORANGE_SAND);
+        this.createRotatedVariantBlock(BOPBlocks.BLACK_SAND);
 
         this.createRotatedVariantBlock(BOPBlocks.BRIMSTONE);
+        this.createTrivialCube(BOPBlocks.ROSE_QUARTZ_BLOCK);
+        this.createTrivialCube(BOPBlocks.WISPJELLY);
         this.createRotatedVariantBlock(BOPBlocks.DRIED_SALT);
+        this.registerSimpleItemModel(BOPBlocks.THERMAL_CALCITE, ModelLocationUtils.getModelLocation(BOPBlocks.THERMAL_CALCITE, "_inventory"));
+        this.registerSimpleItemModel(BOPBlocks.THERMAL_CALCITE_VENT, ModelLocationUtils.getModelLocation(BOPBlocks.THERMAL_CALCITE_VENT, "_inventory"));
 
         this.createMushroomBlock(BOPBlocks.TOADSTOOL_BLOCK);
         this.createGlowshroomBlock(BOPBlocks.GLOWSHROOM_BLOCK);
+        this.createFullAndCarpetBlocks(BOPBlocks.GLOWING_MOSS_BLOCK, BOPBlocks.GLOWING_MOSS_CARPET);
 
         this.registerSimpleTintedItemModel(BOPBlocks.MOSSY_BLACK_SAND, ModelLocationUtils.getModelLocation(BOPBlocks.MOSSY_BLACK_SAND), new GrassColorSource());
 
-        this.createLeavesOverlay(BOPBlocks.FLOWERING_OAK_LEAVES, FoliageColor.FOLIAGE_DEFAULT);
         this.createWillowVine();
 
         //
@@ -320,81 +333,81 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         ResourceLocation resourcelocation = ModelTemplates.SINGLE_FACE.create(p_388752_, TextureMapping.defaultTexture(p_388752_), this.modelOutput);
         ResourceLocation resourcelocation1 = ModelLocationUtils.getModelLocation(p_388752_, "_inside");
         this.blockStateOutput
-            .accept(
-                MultiPartGenerator.multiPart(p_388752_)
-                    .with(Condition.condition().term(BlockStateProperties.NORTH, true), Variant.variant().with(VariantProperties.MODEL, resourcelocation))
-                    .with(
-                        Condition.condition().term(BlockStateProperties.EAST, true),
-                        Variant.variant()
-                            .with(VariantProperties.MODEL, resourcelocation)
-                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)
-                            .with(VariantProperties.UV_LOCK, true)
-                    )
-                    .with(
-                        Condition.condition().term(BlockStateProperties.SOUTH, true),
-                        Variant.variant()
-                            .with(VariantProperties.MODEL, resourcelocation)
-                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)
-                            .with(VariantProperties.UV_LOCK, true)
-                    )
-                    .with(
-                        Condition.condition().term(BlockStateProperties.WEST, true),
-                        Variant.variant()
-                            .with(VariantProperties.MODEL, resourcelocation)
-                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)
-                            .with(VariantProperties.UV_LOCK, true)
-                    )
-                    .with(
-                        Condition.condition().term(BlockStateProperties.UP, true),
-                        Variant.variant()
-                            .with(VariantProperties.MODEL, resourcelocation)
-                            .with(VariantProperties.X_ROT, VariantProperties.Rotation.R270)
-                            .with(VariantProperties.UV_LOCK, true)
-                    )
-                    .with(
-                        Condition.condition().term(BlockStateProperties.DOWN, true),
-                        Variant.variant()
-                            .with(VariantProperties.MODEL, resourcelocation)
-                            .with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)
-                            .with(VariantProperties.UV_LOCK, true)
-                    )
-                    .with(Condition.condition().term(BlockStateProperties.NORTH, false), Variant.variant().with(VariantProperties.MODEL, resourcelocation1))
-                    .with(
-                        Condition.condition().term(BlockStateProperties.EAST, false),
-                        Variant.variant()
-                            .with(VariantProperties.MODEL, resourcelocation1)
-                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)
-                            .with(VariantProperties.UV_LOCK, false)
-                    )
-                    .with(
-                        Condition.condition().term(BlockStateProperties.SOUTH, false),
-                        Variant.variant()
-                            .with(VariantProperties.MODEL, resourcelocation1)
-                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)
-                            .with(VariantProperties.UV_LOCK, false)
-                    )
-                    .with(
-                        Condition.condition().term(BlockStateProperties.WEST, false),
-                        Variant.variant()
-                            .with(VariantProperties.MODEL, resourcelocation1)
-                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)
-                            .with(VariantProperties.UV_LOCK, false)
-                    )
-                    .with(
-                        Condition.condition().term(BlockStateProperties.UP, false),
-                        Variant.variant()
-                            .with(VariantProperties.MODEL, resourcelocation1)
-                            .with(VariantProperties.X_ROT, VariantProperties.Rotation.R270)
-                            .with(VariantProperties.UV_LOCK, false)
-                    )
-                    .with(
-                        Condition.condition().term(BlockStateProperties.DOWN, false),
-                        Variant.variant()
-                            .with(VariantProperties.MODEL, resourcelocation1)
-                            .with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)
-                            .with(VariantProperties.UV_LOCK, false)
-                    )
-            );
+                .accept(
+                        MultiPartGenerator.multiPart(p_388752_)
+                                .with(Condition.condition().term(BlockStateProperties.NORTH, true), Variant.variant().with(VariantProperties.MODEL, resourcelocation))
+                                .with(
+                                        Condition.condition().term(BlockStateProperties.EAST, true),
+                                        Variant.variant()
+                                                .with(VariantProperties.MODEL, resourcelocation)
+                                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)
+                                                .with(VariantProperties.UV_LOCK, true)
+                                )
+                                .with(
+                                        Condition.condition().term(BlockStateProperties.SOUTH, true),
+                                        Variant.variant()
+                                                .with(VariantProperties.MODEL, resourcelocation)
+                                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)
+                                                .with(VariantProperties.UV_LOCK, true)
+                                )
+                                .with(
+                                        Condition.condition().term(BlockStateProperties.WEST, true),
+                                        Variant.variant()
+                                                .with(VariantProperties.MODEL, resourcelocation)
+                                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)
+                                                .with(VariantProperties.UV_LOCK, true)
+                                )
+                                .with(
+                                        Condition.condition().term(BlockStateProperties.UP, true),
+                                        Variant.variant()
+                                                .with(VariantProperties.MODEL, resourcelocation)
+                                                .with(VariantProperties.X_ROT, VariantProperties.Rotation.R270)
+                                                .with(VariantProperties.UV_LOCK, true)
+                                )
+                                .with(
+                                        Condition.condition().term(BlockStateProperties.DOWN, true),
+                                        Variant.variant()
+                                                .with(VariantProperties.MODEL, resourcelocation)
+                                                .with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)
+                                                .with(VariantProperties.UV_LOCK, true)
+                                )
+                                .with(Condition.condition().term(BlockStateProperties.NORTH, false), Variant.variant().with(VariantProperties.MODEL, resourcelocation1))
+                                .with(
+                                        Condition.condition().term(BlockStateProperties.EAST, false),
+                                        Variant.variant()
+                                                .with(VariantProperties.MODEL, resourcelocation1)
+                                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)
+                                                .with(VariantProperties.UV_LOCK, false)
+                                )
+                                .with(
+                                        Condition.condition().term(BlockStateProperties.SOUTH, false),
+                                        Variant.variant()
+                                                .with(VariantProperties.MODEL, resourcelocation1)
+                                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180)
+                                                .with(VariantProperties.UV_LOCK, false)
+                                )
+                                .with(
+                                        Condition.condition().term(BlockStateProperties.WEST, false),
+                                        Variant.variant()
+                                                .with(VariantProperties.MODEL, resourcelocation1)
+                                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)
+                                                .with(VariantProperties.UV_LOCK, false)
+                                )
+                                .with(
+                                        Condition.condition().term(BlockStateProperties.UP, false),
+                                        Variant.variant()
+                                                .with(VariantProperties.MODEL, resourcelocation1)
+                                                .with(VariantProperties.X_ROT, VariantProperties.Rotation.R270)
+                                                .with(VariantProperties.UV_LOCK, false)
+                                )
+                                .with(
+                                        Condition.condition().term(BlockStateProperties.DOWN, false),
+                                        Variant.variant()
+                                                .with(VariantProperties.MODEL, resourcelocation1)
+                                                .with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)
+                                                .with(VariantProperties.UV_LOCK, false)
+                                )
+                );
         this.registerSimpleItemModel(p_388752_, TexturedModel.CUBE.createWithSuffix(p_388752_, "_inventory", this.modelOutput));
     }
 
