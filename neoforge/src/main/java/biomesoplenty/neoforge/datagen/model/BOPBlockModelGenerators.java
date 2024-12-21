@@ -14,6 +14,7 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.blockstates.*;
 import net.minecraft.client.data.models.model.*;
+import net.minecraft.core.Direction;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.FoliageColor;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -85,7 +87,8 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.createPlantWithDefaultItem(BOPBlocks.FIR_SAPLING, BOPBlocks.POTTED_FIR_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
         // Pine
-        this.woodProvider(BOPBlocks.PINE_LOG).logWithHorizontal(BOPBlocks.PINE_LOG).wood(BOPBlocks.PINE_WOOD);
+        this.woodProvider(BOPBlocks.PINE_LOG).wood(BOPBlocks.PINE_WOOD);
+        this.logWithKnot(BOPBlocks.PINE_LOG);
         this.woodProvider(BOPBlocks.STRIPPED_PINE_LOG).logWithHorizontal(BOPBlocks.STRIPPED_PINE_LOG).wood(BOPBlocks.STRIPPED_PINE_WOOD);
         this.createHangingSign(BOPBlocks.STRIPPED_PINE_LOG, BOPBlocks.PINE_HANGING_SIGN, BOPBlocks.PINE_WALL_HANGING_SIGN);
         this.createLeavesOverlay(BOPBlocks.PINE_LEAVES, FoliageColor.FOLIAGE_DEFAULT);
@@ -152,7 +155,8 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.createPlantWithDefaultItem(BOPBlocks.MAGIC_SAPLING, BOPBlocks.POTTED_MAGIC_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
         // Umbran
-        this.woodProvider(BOPBlocks.UMBRAN_LOG).logWithHorizontal(BOPBlocks.UMBRAN_LOG).wood(BOPBlocks.UMBRAN_WOOD);
+        this.woodProvider(BOPBlocks.UMBRAN_LOG).wood(BOPBlocks.UMBRAN_WOOD);
+        this.logWithKnot(BOPBlocks.UMBRAN_LOG);
         this.woodProvider(BOPBlocks.STRIPPED_UMBRAN_LOG).logWithHorizontal(BOPBlocks.STRIPPED_UMBRAN_LOG).wood(BOPBlocks.STRIPPED_UMBRAN_WOOD);
         this.createHangingSign(BOPBlocks.STRIPPED_UMBRAN_LOG, BOPBlocks.UMBRAN_HANGING_SIGN, BOPBlocks.UMBRAN_WALL_HANGING_SIGN);
         this.createTrivialBlock(BOPBlocks.UMBRAN_LEAVES, TexturedModel.LEAVES);
@@ -326,6 +330,45 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
     {
         ResourceLocation resourcelocation = this.createFlatItemModelWithBlockTexture(block.asItem(), block);
         this.registerSimpleTintedItemModel(block, resourcelocation, tint);
+    }
+
+    public void logWithKnot(Block block)
+    {
+        var logMapping = TextureMapping.logColumn(block);
+        var logKnotMapping = BOPTextureMapping.logColumnKnot(block);
+        ResourceLocation columnModel = ModelTemplates.CUBE_COLUMN.create(block, logMapping, this.modelOutput);
+        ResourceLocation horizontalModel = ModelTemplates.CUBE_COLUMN_HORIZONTAL.create(block, logMapping, this.modelOutput);
+        ResourceLocation columnKnotModel = ModelTemplates.CUBE_COLUMN.createWithSuffix(block, "_knot", logKnotMapping, this.modelOutput);
+        ResourceLocation horizontalKnotModel = ModelTemplates.CUBE_COLUMN_HORIZONTAL.createWithSuffix(block, "_knot", logKnotMapping, this.modelOutput);
+        this.blockStateOutput.accept(
+            MultiVariantGenerator.multiVariant(block)
+                .with(
+                        PropertyDispatch.property(BlockStateProperties.AXIS)
+                                .select(Direction.Axis.Y, List.of(
+                                        Variant.variant().with(VariantProperties.MODEL, columnModel),
+                                        Variant.variant().with(VariantProperties.MODEL, columnKnotModel)
+                                ))
+                                .select(
+                                        Direction.Axis.Z,
+                                        List.of(
+                                                Variant.variant().with(VariantProperties.MODEL, horizontalModel).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90),
+                                                Variant.variant().with(VariantProperties.MODEL, horizontalKnotModel).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)
+                                        )
+                                )
+                                .select(
+                                        Direction.Axis.X,
+                                        List.of(Variant.variant()
+                                                .with(VariantProperties.MODEL, horizontalModel)
+                                                .with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)
+                                                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90),
+                                                Variant.variant()
+                                                        .with(VariantProperties.MODEL, horizontalKnotModel)
+                                                        .with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)
+                                                        .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90)
+                                        )
+                                )
+                )
+        );
     }
 
     public void createGlowshroomBlock(Block p_388752_)

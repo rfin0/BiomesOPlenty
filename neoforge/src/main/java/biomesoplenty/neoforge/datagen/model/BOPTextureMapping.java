@@ -20,4 +20,12 @@ public class BOPTextureMapping
                 .put(TextureSlot.LAYER1, getBlockTexture(block, "_overlay"))
                 .put(TextureSlot.LAYER0, getBlockTexture(block));
     }
+
+    public static TextureMapping logColumnKnot(Block block)
+    {
+        return new TextureMapping()
+                .put(TextureSlot.SIDE, getBlockTexture(block, "_knot"))
+                .put(TextureSlot.END, getBlockTexture(block, "_top"))
+                .put(TextureSlot.PARTICLE, getBlockTexture(block));
+    }
 }
