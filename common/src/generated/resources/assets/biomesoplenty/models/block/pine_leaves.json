@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/leaves",
+  "parent": "biomesoplenty:block/leaves_overlay",
   "textures": {
-    "all": "biomesoplenty:block/pine_leaves"
+    "layer0": "biomesoplenty:block/pine_leaves",
+    "layer1": "biomesoplenty:block/pine_leaves_overlay"
   }
 }

@@ -87,7 +87,7 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.woodProvider(BOPBlocks.PINE_LOG).logWithHorizontal(BOPBlocks.PINE_LOG).wood(BOPBlocks.PINE_WOOD);
         this.woodProvider(BOPBlocks.STRIPPED_PINE_LOG).logWithHorizontal(BOPBlocks.STRIPPED_PINE_LOG).wood(BOPBlocks.STRIPPED_PINE_WOOD);
         this.createHangingSign(BOPBlocks.STRIPPED_PINE_LOG, BOPBlocks.PINE_HANGING_SIGN, BOPBlocks.PINE_WALL_HANGING_SIGN);
-        this.createTintedLeaves(BOPBlocks.PINE_LEAVES, TexturedModel.LEAVES, FoliageColor.FOLIAGE_DEFAULT);
+        this.createLeavesOverlay(BOPBlocks.PINE_LEAVES, FoliageColor.FOLIAGE_DEFAULT);
         this.createPlantWithDefaultItem(BOPBlocks.PINE_SAPLING, BOPBlocks.POTTED_PINE_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
         // Maple
