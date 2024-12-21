@@ -178,6 +178,9 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.createPlantWithDefaultItem(BOPBlocks.SNOWBLOSSOM_SAPLING, BOPBlocks.POTTED_SNOWBLOSSOM_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
         this.createPlantWithDefaultItem(BOPBlocks.RAINBOW_BIRCH_SAPLING, BOPBlocks.POTTED_RAINBOW_BIRCH_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
+        // Separate item model for flowering oak leaves
+        this.registerSimpleItemModel(BOPBlocks.RAINBOW_BIRCH_LEAVES, TexturedModel.LEAVES.createWithSuffix(BOPBlocks.RAINBOW_BIRCH_LEAVES, "_inventory", this.modelOutput));
+
         this.createRotatedVariantBlock(BOPBlocks.BRIMSTONE);
         this.createRotatedVariantBlock(BOPBlocks.DRIED_SALT);
 
