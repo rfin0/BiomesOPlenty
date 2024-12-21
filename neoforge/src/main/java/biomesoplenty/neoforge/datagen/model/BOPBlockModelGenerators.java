@@ -16,11 +16,8 @@ import net.minecraft.client.data.models.blockstates.*;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.Map;
@@ -188,7 +185,8 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.createGlowshroomBlock(BOPBlocks.GLOWSHROOM_BLOCK);
 
         this.registerSimpleTintedItemModel(BOPBlocks.MOSSY_BLACK_SAND, ModelLocationUtils.getModelLocation(BOPBlocks.MOSSY_BLACK_SAND), new GrassColorSource());
-        this.registerSimpleTintedItemModel(BOPBlocks.FLOWERING_OAK_LEAVES, ModelLocationUtils.getModelLocation(BOPBlocks.FLOWERING_OAK_LEAVES), ItemModelUtils.constantTint(-12012264));
+
+        this.createLeavesOverlay(BOPBlocks.FLOWERING_OAK_LEAVES, FoliageColor.FOLIAGE_DEFAULT);
         this.createWillowVine();
 
         //
@@ -272,6 +270,14 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.createTintedBlockItemModel(BOPBlocks.HUGE_CLOVER_PETAL, new GrassColorSource());
         this.createTintedBlockItemModel(BOPBlocks.HIGH_GRASS, new GrassColorSource());
         this.createTintedBlockItemModel(BOPBlocks.HUGE_LILY_PAD, ItemModelUtils.constantTint(-9321636));
+    }
+
+    public void createLeavesOverlay(Block block, int tint)
+    {
+        TextureMapping textureMapping = BOPTextureMapping.leavesOverlay(block);
+        ResourceLocation model = BOPModelTemplates.LEAVES_OVERLAY.create(block, textureMapping, this.modelOutput);
+        this.blockStateOutput.accept(createSimpleBlock(block, model));
+        this.registerSimpleTintedItemModel(block, model, ItemModelUtils.constantTint(tint));
     }
 
     @Override

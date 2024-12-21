@@ -1,4 +1,4 @@
-// 1.21.4	2024-12-20T10:26:33.0485094	Model Definitions
+// 1.21.4	2024-12-21T11:59:26.1507387	Model Definitions
 3670b788e3f8e8154db2b0cb2a4eec8d1d92ce02 assets/biomesoplenty/blockstates/black_sandstone.json
 b7e71e9e2c45918de279dba69073d21fc4da8c34 assets/biomesoplenty/blockstates/black_sandstone_slab.json
 99a0b068818dd6a10909ea477064d05f752ddcfb assets/biomesoplenty/blockstates/black_sandstone_stairs.json
@@ -71,6 +71,7 @@ d1586a89b3a26729e7d2ba2e0bd2b3c046ebba66 assets/biomesoplenty/blockstates/fir_sl
 18bb4164769be58e2e0f1cbe574cb46d40d8b105 assets/biomesoplenty/blockstates/fir_wall_hanging_sign.json
 53f3d6f7ce4c4bced3be85684d555b52db071a7f assets/biomesoplenty/blockstates/fir_wall_sign.json
 3d56ee6c5c469557925befa353c4babab765cf60 assets/biomesoplenty/blockstates/fir_wood.json
+0f53db4fc5fc9f80c1fbe519b49ca967863676e8 assets/biomesoplenty/blockstates/flowering_oak_leaves.json
 097ac8280db734a2be5459e0ea94b799c6f4009d assets/biomesoplenty/blockstates/flowering_oak_sapling.json
 49548ae1e7d24e7b11bbab05f9f2ea1b0f9564f8 assets/biomesoplenty/blockstates/glowshroom_block.json
 b82f79199f3213ff338d21fb3547cc33d8a56ba4 assets/biomesoplenty/blockstates/hellbark_button.json
@@ -893,6 +894,7 @@ bea9b67a151540be3755f99266a33259015e8822 assets/biomesoplenty/models/block/fir_t
 da2a5e7ad73626e40ede156bcb1b642aad791748 assets/biomesoplenty/models/block/fir_trapdoor_open.json
 549077112dd906a448700944d39d175c93c01d68 assets/biomesoplenty/models/block/fir_trapdoor_top.json
 2fe51aac3e6442c8ad1b52acb206fb7bd8b9ce54 assets/biomesoplenty/models/block/fir_wood.json
+09bf33f18dc12df9e4aa410bb718bddb718fbffb assets/biomesoplenty/models/block/flowering_oak_leaves.json
 dba135910215d4b1ad8a817809e3c2aabcfe45eb assets/biomesoplenty/models/block/flowering_oak_sapling.json
 71fc73d25b64d804d364f8b93b5c45dcaf9b6122 assets/biomesoplenty/models/block/glowshroom_block.json
 aacba1f9cac6eb67b97cf22f1cd4f5412854ef20 assets/biomesoplenty/models/block/glowshroom_block_inventory.json
