@@ -143,10 +143,10 @@ public class ModBlocks
 
         TOADSTOOL = register(func, "toadstool", MushroomBlockBOP::new, BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).mapColor(MapColor.COLOR_ORANGE).noCollission().instabreak().sound(SoundType.GRASS));
         TOADSTOOL_BLOCK = register(func, "toadstool_block", HugeMushroomBlock::new, BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).ignitedByLava().mapColor(MapColor.COLOR_ORANGE).strength(0.2F).sound(SoundType.WOOD));
-        GLOWSHROOM = register(func, "glowshroom", MushroomBlockBOP::new, BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).mapColor(MapColor.DIAMOND).noCollission().instabreak().sound(SoundType.GRASS).lightLevel((state) -> 6).emissiveRendering((state, world, pos) -> true));
+        GLOWSHROOM = register(func, "glowshroom", MushroomBlockBOP::new, BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).mapColor(MapColor.DIAMOND).noCollission().instabreak().sound(SoundType.GRASS).lightLevel((state) -> 3));
         GLOWSHROOM_BLOCK = register(func, "glowshroom_block", HugeMushroomBlock::new, BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).ignitedByLava().mapColor(MapColor.DIAMOND).strength(0.2F).sound(SoundType.WOOD).lightLevel((state) -> 10).emissiveRendering((state, world, pos) -> true));
-        GLOWING_MOSS_BLOCK = register(func, "glowing_moss_block", GlowingMossBlock::new, BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).mapColor(MapColor.DIAMOND).strength(0.1F).sound(SoundType.MOSS).lightLevel((state) -> 6));
-        GLOWING_MOSS_CARPET = register(func, "glowing_moss_carpet", CarpetBlock::new, BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).mapColor(MapColor.DIAMOND).strength(0.1F).sound(SoundType.MOSS_CARPET).lightLevel((state) -> 6));
+        GLOWING_MOSS_BLOCK = register(func, "glowing_moss_block", GlowingMossBlock::new, BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).mapColor(MapColor.DIAMOND).strength(0.1F).sound(SoundType.MOSS).lightLevel((state) -> 3));
+        GLOWING_MOSS_CARPET = register(func, "glowing_moss_carpet", CarpetBlock::new, BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).mapColor(MapColor.DIAMOND).strength(0.1F).sound(SoundType.MOSS_CARPET).lightLevel((state) -> 3));
         GLOWWORM_SILK = register(func, "glowworm_silk", GlowwormSilkBottomBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.DIAMOND).pushReaction(PushReaction.DESTROY).replaceable().ignitedByLava().noCollission().instabreak().sound(SoundType.WOOL).lightLevel((state) -> 2).emissiveRendering((state, world, pos) -> true));
         GLOWWORM_SILK_STRAND = register(func, "glowworm_silk_strand", GlowwormSilkBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.DIAMOND).pushReaction(PushReaction.DESTROY).replaceable().ignitedByLava().noCollission().instabreak().sound(SoundType.WOOL).lightLevel((state) -> 2).emissiveRendering((state, world, pos) -> true));
 
@@ -523,7 +523,7 @@ public class ModBlocks
         POTTED_SPROUT = register(func, "potted_sprout", p -> new FlowerPotBlock(SPROUT, p), BlockBehaviour.Properties.of().noOcclusion().pushReaction(PushReaction.DESTROY).instabreak());
         POTTED_TINY_CACTUS = register(func, "potted_tiny_cactus", p -> new FlowerPotBlock(TINY_CACTUS, p), BlockBehaviour.Properties.of().noOcclusion().pushReaction(PushReaction.DESTROY).instabreak());
         POTTED_TOADSTOOL = register(func, "potted_toadstool", p -> new FlowerPotBlock(TOADSTOOL, p), BlockBehaviour.Properties.of().noOcclusion().pushReaction(PushReaction.DESTROY).instabreak());
-        POTTED_GLOWSHROOM = register(func, "potted_glowshroom", p -> new FlowerPotBlock(GLOWSHROOM, p), BlockBehaviour.Properties.of().noOcclusion().pushReaction(PushReaction.DESTROY).instabreak().lightLevel((state) -> 6).emissiveRendering((state, world, pos) -> true));
+        POTTED_GLOWSHROOM = register(func, "potted_glowshroom", p -> new FlowerPotBlock(GLOWSHROOM, p), BlockBehaviour.Properties.of().noOcclusion().pushReaction(PushReaction.DESTROY).instabreak().lightLevel((state) -> 3));
     }
 
     private static BlockBehaviour.Properties logProperties(MapColor MapColor, MapColor MapColor2, SoundType soundType) {

@@ -203,7 +203,7 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
 
         this.createMushroomBlock(BOPBlocks.TOADSTOOL_BLOCK);
         this.createGlowshroomBlock(BOPBlocks.GLOWSHROOM_BLOCK);
-        this.createFullAndCarpetBlocks(BOPBlocks.GLOWING_MOSS_BLOCK, BOPBlocks.GLOWING_MOSS_CARPET);
+        //this.createFullAndCarpetBlocks(BOPBlocks.GLOWING_MOSS_BLOCK, BOPBlocks.GLOWING_MOSS_CARPET);
 
         this.registerSimpleTintedItemModel(BOPBlocks.MOSSY_BLACK_SAND, ModelLocationUtils.getModelLocation(BOPBlocks.MOSSY_BLACK_SAND), new GrassColorSource());
 
@@ -230,7 +230,6 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.registerSimpleFlatItemModel(BOPBlocks.WEBBING);
 
         this.registerSimpleFlatItemModel(BOPBlocks.TOADSTOOL);
-        this.registerSimpleFlatItemModel(BOPBlocks.GLOWSHROOM);
 
         this.registerSimpleFlatItemModel(BOPBlocks.BRIMSTONE_BUD);
         this.registerSimpleFlatItemModel(BOPBlocks.BLACKSTONE_SPINES);
@@ -265,6 +264,7 @@ public class BOPBlockModelGenerators extends BlockModelGenerators
         this.registerSimpleFlatItemModel(BOPBlocks.TINY_CACTUS);
 
         // Items that use a separate item texture from their block
+        this.createBlockItemModel(BOPBlocks.GLOWSHROOM);
         this.createBlockItemModel(BOPBlocks.RED_MAPLE_LEAF_PILE);
         this.createBlockItemModel(BOPBlocks.ORANGE_MAPLE_LEAF_PILE);
         this.createBlockItemModel(BOPBlocks.YELLOW_MAPLE_LEAF_PILE);

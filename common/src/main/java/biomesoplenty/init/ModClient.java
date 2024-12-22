@@ -77,6 +77,8 @@ public class ModClient
         RenderHelper.setRenderType(NULL_END_STONE, transparentRenderType);
         RenderHelper.setRenderType(NULL_LEAVES, transparentRenderType);
         RenderHelper.setRenderType(NULL_PLANT, cutoutRenderType);
+        RenderHelper.setRenderType(GLOWING_MOSS_BLOCK, cutoutRenderType);
+        RenderHelper.setRenderType(GLOWING_MOSS_CARPET, cutoutRenderType);
 
         RenderHelper.setRenderType(ORIGIN_LEAVES, transparentRenderType);
         RenderHelper.setRenderType(FLOWERING_OAK_LEAVES, transparentRenderType);
